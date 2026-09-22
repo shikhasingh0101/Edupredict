@@ -12,4 +12,9 @@ UI_PID=$!
 
 trap 'kill "$API_PID" "$UI_PID" 2>/dev/null || true' INT TERM EXIT
 
-wait -n "$API_PID" "$UI_PID"
+while kill -0 "$API_PID" 2>/dev/null && kill -0 "$UI_PID" 2>/dev/null
+do
+    sleep 1
+done
+
+exit 1
