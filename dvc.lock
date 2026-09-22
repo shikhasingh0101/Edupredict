@@ -97,8 +97,8 @@ stages:
       size: 692430
     - path: models/edupredict_final_pipeline.joblib
       hash: md5
-      md5: 01acfe65efce37d55db8cc3ac8fedf25
-      size: 7618
+      md5: f2f8d057cb51c5b39a06b7ec03e80eb2
+      size: 7634
     - path: outputs/metrics/selected_features.json
       hash: md5
       md5: d121c94b5b1474d363a7a6eb7dfb1441
