@@ -1,0 +1,33 @@
+{
+  "rows": 6607,
+  "columns": 20,
+  "duplicates": 0,
+  "missing_cells": 235,
+  "rows_with_missing_values": 229,
+  "invalid_target_rows_outside_0_100": 1,
+  "target": "Exam_Score",
+  "numerical_columns": [
+    "Hours_Studied",
+    "Attendance",
+    "Sleep_Hours",
+    "Previous_Scores",
+    "Tutoring_Sessions",
+    "Physical_Activity",
+    "Exam_Score"
+  ],
+  "categorical_columns": [
+    "Parental_Involvement",
+    "Access_to_Resources",
+    "Extracurricular_Activities",
+    "Motivation_Level",
+    "Internet_Access",
+    "Family_Income",
+    "Teacher_Quality",
+    "School_Type",
+    "Peer_Influence",
+    "Learning_Disabilities",
+    "Parental_Education_Level",
+    "Distance_from_Home",
+    "Gender"
+  ]
+}

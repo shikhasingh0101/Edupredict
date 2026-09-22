@@ -1,0 +1,5 @@
+random_state: 42
+test_size: 0.20
+validation_size: 0.20
+target_column: Exam_Score
+primary_metric: rmse

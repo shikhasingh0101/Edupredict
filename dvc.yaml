@@ -1,0 +1,66 @@
+stages:
+  validate:
+    cmd: python -m src.data.validation
+    deps:
+      - src/data/validation.py
+      - data/raw/StudentPerformanceFactors.csv
+    outs:
+      - outputs/reports/data_validation.json:
+          cache: false
+
+  clean:
+    cmd: python -m src.data.cleaning
+    deps:
+      - src/data/cleaning.py
+      - data/raw/StudentPerformanceFactors.csv
+    outs:
+      - data/processed/student_performance_clean.csv
+
+  engineer:
+    cmd: python -m src.features.feature_engineering
+    deps:
+      - src/features/feature_engineering.py
+      - data/processed/student_performance_clean.csv
+    outs:
+      - data/processed/student_performance_engineered.csv
+
+  select:
+    cmd: python -m src.features.feature_selection
+    deps:
+      - src/features/feature_selection.py
+      - data/processed/student_performance_engineered.csv
+    outs:
+      - outputs/metrics/selected_features.json:
+          cache: false
+      - outputs/metrics/permutation_feature_importance.csv:
+          cache: false
+
+  train:
+    cmd: python -m src.models.train
+    deps:
+      - src/models/train.py
+      - src/features/preprocessing.py
+      - data/processed/student_performance_engineered.csv
+      - outputs/metrics/selected_features.json
+      - params.yaml
+    outs:
+      - models/edupredict_final_pipeline.joblib
+    metrics:
+      - outputs/metrics/model_experiment_results.csv:
+          cache: false
+      - outputs/metrics/model_experiment_summary.json:
+          cache: false
+
+  evaluate:
+    cmd: python -m src.models.evaluate
+    deps:
+      - src/models/evaluate.py
+      - models/edupredict_final_pipeline.joblib
+      - data/processed/student_performance_engineered.csv
+      - outputs/metrics/selected_features.json
+    outs:
+      - outputs/predictions/test_predictions.csv:
+          cache: false
+    metrics:
+      - outputs/metrics/final_model_evaluation.json:
+          cache: false

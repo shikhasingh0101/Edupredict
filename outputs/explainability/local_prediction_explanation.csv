@@ -1,0 +1,22 @@
+feature,original_value,comparison_value,base_prediction,modified_prediction,prediction_change
+Hours_Studied,16,20.0,66.0196523104448,66.83957167111456,0.8199193606697577
+Attendance,82,80.0,66.0196523104448,65.65512556490752,-0.36452674553727604
+Parental_Involvement,Medium,Not perturbed,66.0196523104448,,
+Access_to_Resources,Medium,Not perturbed,66.0196523104448,,
+Extracurricular_Activities,No,Not perturbed,66.0196523104448,,
+Sleep_Hours,6,7.0,66.0196523104448,65.94537535273214,-0.07427695771265519
+Previous_Scores,91,75.0,66.0196523104448,65.23722113703764,-0.7824311734071614
+Motivation_Level,Medium,Not perturbed,66.0196523104448,,
+Internet_Access,Yes,Not perturbed,66.0196523104448,,
+Tutoring_Sessions,0,1.0,66.0196523104448,66.50148143005568,0.4818291196108788
+Family_Income,Low,Not perturbed,66.0196523104448,,
+Teacher_Quality,Medium,Not perturbed,66.0196523104448,,
+School_Type,Public,Not perturbed,66.0196523104448,,
+Peer_Influence,Positive,Not perturbed,66.0196523104448,,
+Physical_Activity,3,3.0,66.0196523104448,66.0196523104448,0.0
+Learning_Disabilities,No,Not perturbed,66.0196523104448,,
+Parental_Education_Level,High School,Not perturbed,66.0196523104448,,
+Distance_from_Home,Near,Not perturbed,66.0196523104448,,
+Gender,Female,Not perturbed,66.0196523104448,,
+Study_Attendance_Interaction,1312,1566.0,66.0196523104448,66.22220963891405,0.20255732846925412
+Study_Sleep_Interaction,96,136.0,66.0196523104448,66.1538810879877,0.1342287775429014

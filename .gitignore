@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+*.pem
+*.key
+
+# ML artifacts / local services
+mlruns/
+mlartifacts/
+mlflow.db
+*.sqlite
+models/*.joblib
+
+# Generated data and reports
+data/processed/*
+data/reference/*
+outputs/figures/*
+outputs/metrics/*
+outputs/predictions/*
+!outputs/figures/.gitkeep
+!outputs/metrics/.gitkeep
+!outputs/predictions/.gitkeep
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/

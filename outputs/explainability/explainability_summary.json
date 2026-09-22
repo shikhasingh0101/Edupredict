@@ -1,0 +1,18 @@
+{
+    "test_rmse": 1.5224087707397842,
+    "top_features": [
+        "Attendance",
+        "Hours_Studied",
+        "Access_to_Resources",
+        "Previous_Scores",
+        "Parental_Involvement",
+        "Tutoring_Sessions",
+        "Study_Attendance_Interaction",
+        "Family_Income",
+        "Peer_Influence",
+        "Parental_Education_Level"
+    ],
+    "global_method": "Permutation Importance",
+    "local_method": "Numeric one-feature perturbation sensitivity",
+    "warning": "Feature importance and sensitivity describe model behavior and should not be interpreted as causal effects."
+}

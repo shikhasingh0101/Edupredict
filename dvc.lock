@@ -1,0 +1,134 @@
+schema: '2.0'
+stages:
+  clean:
+    cmd: python -m src.data.cleaning
+    deps:
+    - path: data/raw/StudentPerformanceFactors.csv
+      hash: md5
+      md5: b4a4c6ce906010dc03956046fa8de891
+      size: 641949
+    - path: src/data/cleaning.py
+      hash: md5
+      md5: 9dc2f1d9a8ab10e0306d252f4b30906e
+      size: 1071
+    outs:
+    - path: data/processed/student_performance_clean.csv
+      hash: md5
+      md5: fadfacd1b74fc1a484f549489b0c26f5
+      size: 635243
+  engineer:
+    cmd: python -m src.features.feature_engineering
+    deps:
+    - path: data/processed/student_performance_clean.csv
+      hash: md5
+      md5: fadfacd1b74fc1a484f549489b0c26f5
+      size: 635243
+    - path: src/features/feature_engineering.py
+      hash: md5
+      md5: e5880f4d4bb544871785011fc8a03fc6
+      size: 1126
+    outs:
+    - path: data/processed/student_performance_engineered.csv
+      hash: md5
+      md5: a7f0fd1aa541474b76e0e79d77b5091b
+      size: 692430
+  select:
+    cmd: python -m src.features.feature_selection
+    deps:
+    - path: data/processed/student_performance_engineered.csv
+      hash: md5
+      md5: a7f0fd1aa541474b76e0e79d77b5091b
+      size: 692430
+    - path: src/features/feature_selection.py
+      hash: md5
+      md5: 06dd3caa2ad179d0c99500db391aa2ac
+      size: 3183
+    outs:
+    - path: outputs/metrics/permutation_feature_importance.csv
+      hash: md5
+      md5: 88dd6b94ffb5f7124fa8c5478da8874a
+      size: 1286
+    - path: outputs/metrics/selected_features.json
+      hash: md5
+      md5: d121c94b5b1474d363a7a6eb7dfb1441
+      size: 552
+  train:
+    cmd: python -m src.models.train
+    deps:
+    - path: data/processed/student_performance_engineered.csv
+      hash: md5
+      md5: a7f0fd1aa541474b76e0e79d77b5091b
+      size: 692430
+    - path: outputs/metrics/selected_features.json
+      hash: md5
+      md5: d121c94b5b1474d363a7a6eb7dfb1441
+      size: 552
+    - path: params.yaml
+      hash: md5
+      md5: ec9d5f0a6bd8d2bb35458bea5d4d29f2
+      size: 102
+    - path: src/features/preprocessing.py
+      hash: md5
+      md5: 564c14c7472b46c21b3357f44950c156
+      size: 863
+    - path: src/models/train.py
+      hash: md5
+      md5: c565e7920529de55833daea2f85330f5
+      size: 5207
+    outs:
+    - path: models/edupredict_final_pipeline.joblib
+      hash: md5
+      md5: 01acfe65efce37d55db8cc3ac8fedf25
+      size: 7618
+    - path: outputs/metrics/model_experiment_results.csv
+      hash: md5
+      md5: f89daa4426ede9b8ef10134df1d48e77
+      size: 471
+    - path: outputs/metrics/model_experiment_summary.json
+      hash: md5
+      md5: a8e18cfa4ffca9b31fd76a4a850d6d6d
+      size: 734
+  evaluate:
+    cmd: python -m src.models.evaluate
+    deps:
+    - path: data/processed/student_performance_engineered.csv
+      hash: md5
+      md5: a7f0fd1aa541474b76e0e79d77b5091b
+      size: 692430
+    - path: models/edupredict_final_pipeline.joblib
+      hash: md5
+      md5: 01acfe65efce37d55db8cc3ac8fedf25
+      size: 7618
+    - path: outputs/metrics/selected_features.json
+      hash: md5
+      md5: d121c94b5b1474d363a7a6eb7dfb1441
+      size: 552
+    - path: src/models/evaluate.py
+      hash: md5
+      md5: 0925f69300030e8906c7c645652fbb80
+      size: 1774
+    outs:
+    - path: outputs/metrics/final_model_evaluation.json
+      hash: md5
+      md5: 218704ce3cf7f86d12374424ed5b2e2e
+      size: 156
+    - path: outputs/predictions/test_predictions.csv
+      hash: md5
+      md5: 09c54f11fdb552339049a63a0feb6f9b
+      size: 54245
+  validate:
+    cmd: python -m src.data.validation
+    deps:
+    - path: data/raw/StudentPerformanceFactors.csv
+      hash: md5
+      md5: b4a4c6ce906010dc03956046fa8de891
+      size: 641949
+    - path: src/data/validation.py
+      hash: md5
+      md5: 73b1966278c38cdb1e0ac36edf906a45
+      size: 1627
+    outs:
+    - path: outputs/reports/data_validation.json
+      hash: md5
+      md5: 3125b4e1575787ebeb91a7970e131a8b
+      size: 712

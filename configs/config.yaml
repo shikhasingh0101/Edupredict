@@ -1,0 +1,9 @@
+dataset_path: data/raw/StudentPerformanceFactors.csv
+model_path: models/model.joblib
+mlflow_tracking_uri: sqlite:///mlflow.db
+mlflow_experiment_name: EduPredict
+random_state: 42
+test_size: 0.20
+model_name: EduPredict
+drift_threshold: 0.05
+target_column: Exam_Score
