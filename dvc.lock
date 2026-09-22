@@ -73,21 +73,21 @@ stages:
       size: 863
     - path: src/models/train.py
       hash: md5
-      md5: c565e7920529de55833daea2f85330f5
-      size: 5207
+      md5: ee14abaeedef5a13f2edc70cf89d88c0
+      size: 20448
     outs:
     - path: models/edupredict_final_pipeline.joblib
       hash: md5
-      md5: 01acfe65efce37d55db8cc3ac8fedf25
-      size: 7618
+      md5: f2f8d057cb51c5b39a06b7ec03e80eb2
+      size: 7634
     - path: outputs/metrics/model_experiment_results.csv
       hash: md5
-      md5: f89daa4426ede9b8ef10134df1d48e77
-      size: 471
+      md5: 8c33623f331928d34ac39995cab2c461
+      size: 676
     - path: outputs/metrics/model_experiment_summary.json
       hash: md5
-      md5: a8e18cfa4ffca9b31fd76a4a850d6d6d
-      size: 734
+      md5: a6084a91e9baf31e090292750bc863e9
+      size: 1085
   evaluate:
     cmd: python -m src.models.evaluate
     deps:
